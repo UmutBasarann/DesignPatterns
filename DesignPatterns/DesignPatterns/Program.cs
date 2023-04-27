@@ -1,4 +1,4 @@
-﻿using DesignPatterns.memento;
+﻿using DesignPatterns.Memento;
 
 var editor = new Editor();
 var history = new History();
