@@ -1,3 +1,15 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using DesignPatterns.memento;
 
-Console.WriteLine("Hello, World!");
+var editor = new Editor();
+var history = new History();
+
+editor.SetContent("a");
+history.Push(editor.CreateState());
+
+editor.SetContent("b");
+history.Push(editor.CreateState());
+
+editor.SetContent("c");
+editor.Restore(history.Pop());
+
+Console.WriteLine(editor.GetContent());
