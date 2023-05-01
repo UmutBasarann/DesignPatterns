@@ -1,14 +1,7 @@
-﻿using DesignPatterns.Iterator;
+﻿using DesignPatterns.Strategy;
+using DesignPatterns.Strategy.Compressor;
+using DesignPatterns.Strategy.Filter;
 
-var history = new BrowseHistory();
-history.Push("a");
-history.Push("b");
-history.Push("c");
-
-IIterator<string> iterator = history.CreateIterator();
-while (iterator.HasNext())
-{
-    string url = iterator.Current();
-    Console.WriteLine(url);
-    iterator.Next();
-}
+var storage = new ImageStorage();
+storage.Store("a", new JpegCompressor(), new BlackAndWhiteFilter());
+storage.Store("a", new PngCompressor(), new HighContrastFilter());
