@@ -1,3 +1,14 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using DesignPatterns.Iterator;
 
-Console.WriteLine("Hello, World!");
+var history = new BrowseHistory();
+history.Push("a");
+history.Push("b");
+history.Push("c");
+
+IIterator<string> iterator = history.CreateIterator();
+while (iterator.HasNext())
+{
+    string url = iterator.Current();
+    Console.WriteLine(url);
+    iterator.Next();
+}
