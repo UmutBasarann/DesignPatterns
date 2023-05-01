@@ -1,5 +1,14 @@
-﻿using DesignPatterns.State;
+﻿using DesignPatterns.Iterator;
 
-var canvas = new Canvas(new SelectionTool());
-canvas.MouseDown();
-canvas.MouseUp();
+var history = new BrowseHistory();
+history.Push("a");
+history.Push("b");
+history.Push("c");
+
+IIterator<string> iterator = history.CreateIterator();
+while (iterator.HasNext())
+{
+    string url = iterator.Current();
+    Console.WriteLine(url);
+    iterator.Next();
+}
